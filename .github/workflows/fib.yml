@@ -19,8 +19,8 @@ jobs:
       with:
         context: .
         file: Dockerfile
-        engine: buildkit
-        architectures: intel64,arm64
+        builder: buildkit
+        platforms: linux/amd64,linux/arm64
         push: false
         tags: fibcalc:latest
         image-name: fibcalc
