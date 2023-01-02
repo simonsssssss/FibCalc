@@ -40,10 +40,10 @@ jobs:
         id: meta
         uses: docker/metadata-action@v4
         with:
-          # base names for images that make them possible to be pushed to docker.io and ghcr.io
+          # base names for tags that make them possible to be pushed to docker.io and ghcr.io
           images: |
-            ${{ secrets.DOCKER_HUB_USERNAME }}/fib_image
-            ghcr.io/${{ secrets.GH_PACKAGES_USERNAME }}/fib_image
+            ${{ secrets.DOCKER_HUB_USERNAME }}/fib_image:v1.2.3
+            ghcr.io/${{ secrets.GH_PACKAGES_USERNAME }}/fib_image:v1.2.3
           tags: |
             type=ref,event=branch
             type=ref,event=pr
