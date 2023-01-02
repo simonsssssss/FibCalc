@@ -45,10 +45,8 @@ jobs:
             ${{ secrets.DOCKER_HUB_USERNAME }}/fib_image
             ghcr.io/${{ secrets.GH_PACKAGES_USERNAME }}/fib_image
           tags: |
-            type=ref,event=branch
-            type=ref,event=pr
-            type=semver,pattern={{major}}.{{minor}}
             v1.2.3
+            type=semver,pattern={{major}}.{{minor}}
     
     - name: Cache Docker layers
       uses: actions/cache@v2
