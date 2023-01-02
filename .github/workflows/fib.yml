@@ -42,13 +42,14 @@ jobs:
         with:
           # base names for tags that make them possible to be pushed to docker.io and ghcr.io
           images: |
-            ${{ secrets.DOCKER_HUB_USERNAME }}/fib_image:v1.2.3
-            ghcr.io/${{ secrets.GH_PACKAGES_USERNAME }}/fib_image:v1.2.3
+            ${{ secrets.DOCKER_HUB_USERNAME }}/fib_image
+            ghcr.io/${{ secrets.GH_PACKAGES_USERNAME }}/fib_image
           tags: |
             type=ref,event=branch
             type=ref,event=pr
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
+            v1.2.3
     
     - name: Cache Docker layers
       uses: actions/cache@v2
