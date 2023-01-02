@@ -27,7 +27,7 @@ jobs:
         file: ./Dockerfile
         platforms: linux/amd64,linux/arm64
         push: false
-        labels: fib_image
+        labels: fib_image:latest
     
     - name: Log into the GitHub Packages Container Registry (ghcr)
       run: |
