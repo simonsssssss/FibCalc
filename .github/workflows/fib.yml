@@ -3,6 +3,8 @@ name: Docker Image CI
 on:
   push:
     branches: [ "main" ]
+    tags:
+      - 'v*'
   pull_request:
     branches: [ "main" ]
 
@@ -33,6 +35,20 @@ jobs:
       run: |
         echo $GITHUB_PACKAGES_TOKEN_VARIABLE | docker login ghcr.io -u simonsssssss --password-stdin
         
+    -   name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v4
+        with:
+          # base names for images that make them possible to be pushed to docker.io and ghcr.io
+          images: |
+            ${{ secrets.DOCKER_HUB_USERNAME }}/fib_image
+            ghcr.io/${{ secrets.GH_PACKAGES_USERNAME }}/fib_image
+          tags: |
+            type=ref,event=branch
+            type=ref,event=pr
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+    
     - name: Cache Docker layers
       uses: actions/cache@v2
       with:
@@ -50,7 +66,5 @@ jobs:
         context: .
         file: Dockerfile
         push: true
-        # tag the image to make it possible to be pushed to docker.io and ghcr.io
-        tags: |
-           ${{ secrets.DOCKER_HUB_USERNAME }}/fib_image:latest
-           ghcr.io/${{ secrets.GH_PACKAGES_USERNAME }}/fib_image:latest
+        tags: ${{ steps.meta.outputs.tags }}
+        labels: ${{ steps.meta.outputs.labels }}
