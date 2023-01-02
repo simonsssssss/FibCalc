@@ -30,7 +30,7 @@ jobs:
         
     - name: Build the image
       run: |
-        docker build -t fib_image:v1 -platform=linux/amd64,linux/arm64 .
+        docker build -t fib_image:v1 --platform=linux/amd64,linux/arm64 .
     - name: sdfs
       run: |
         docker images
