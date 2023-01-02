@@ -27,6 +27,9 @@ jobs:
         file: ./Dockerfile
         platforms: linux/amd64,linux/arm64
         push: false
+    - name: gsag
+      run: |
+        docker build -t fib.v1 .
     - name: sdfs
       run: |
         docker images
