@@ -7,7 +7,7 @@ on:
     branches: [ "main" ]
 
 env:
-  GITHUB_PACKAGES_TOKEN_VARIABLE: ${{ secrets.GH_PACKAGES_TOKEN }}
+  GITHUB_PACKAGES_TOKEN_VARIABLE: ${{ secrets.GH_PACKAGES_TOKEN_VARIABLE }}
 
 jobs:
 
@@ -31,4 +31,4 @@ jobs:
         
     - name: Log into the GitHub Packages Container Registry (ghcr)
       run: |
-        echo kygukygukygukyg
+        echo $GITHUB_PACKAGES_TOKEN_VARIABLE
