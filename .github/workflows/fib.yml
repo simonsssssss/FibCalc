@@ -25,9 +25,12 @@ jobs:
       with:
         file: ./Dockerfile
         platforms: linux/amd64,linux/arm64
-        push: true
+        push: false
         tags: fib_image:latest
         
+    - name: Build the image
+      run: |
+        docker build -t fib_image:v1 -platform=linux/amd64,linux/arm64 .
     - name: sdfs
       run: |
         docker images
