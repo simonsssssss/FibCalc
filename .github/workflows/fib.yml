@@ -41,7 +41,7 @@ jobs:
         file: ./Dockerfile
         push: true
         tags: |
-          simonsssss/fib_image:latest
+           ${{ secrets.DOCKER_HUB_USERNAME }}/fib_image:latest
         
     - name: sdfsrdtrdytf
       run: |
