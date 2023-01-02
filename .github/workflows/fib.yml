@@ -29,11 +29,6 @@ jobs:
         push: false
         image_name: fib_image
     
-    - name: Save image as tar file
-      uses: actions/docker/cli@v2
-      with:
-        args: save ${{ github.repository }}:${{ github.sha }} -o fib_image.tar
-    
     - name: Log into the GitHub Packages Container Registry (ghcr)
       run: |
         echo $GITHUB_PACKAGES_TOKEN_VARIABLE | docker login ghcr.io -u simonsssssss --password-stdin
