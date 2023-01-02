@@ -50,7 +50,7 @@ jobs:
         context: .
         file: ./Dockerfile
         push: true
-        # tag the image to make it possible to be pushed to docker.io and ghcr.io
+        # tag the image to make it possible to be pushed to docker.io and ghcr.iooij
         tags: |
            ${{ secrets.DOCKER_HUB_USERNAME }}/fib_image:latest
            ghcr.io/${{ secrets.GH_PACKAGES_USERNAME }}/fib_image:latest
