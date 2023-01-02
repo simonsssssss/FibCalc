@@ -1,0 +1,25 @@
+# Wybranie obrazu bazowego
+
+FROM --platform=$BUILDPLATFORM eclipse-temurin:17-jdk-jammy AS build
+
+# Okreslenie katalogu roboczego kontenera
+
+WORKDIR /app
+
+# Skopiowanie kodu zrodlowego aplikacji do katalogu /app kontenera
+
+COPY ./src/main/java/com/mycompany/fibcalc/ ./
+
+ARG TARGETPLATFORM
+
+RUN compile --target=$TARGETPLATFORM -o /out/mybinary ./
+
+
+
+FROM eclipse-temurin:17-jdk-jammy
+
+COPY --from=build /out/mybinary ./
+
+# Wykonanie programu FibCalc podczas uruchamiania kontenera
+
+CMD ["java","FibCalc.java"]
