@@ -24,7 +24,7 @@ jobs:
         file: ./Dockerfile
         platforms: linux/amd64,linux/arm64
         push: false
-        tags: fibonacciSequence:latest
+        tags: fibonacci_sequence:latest
         
     - name: Log into the GitHub Packages Container Registry (ghcr)
       run: |
