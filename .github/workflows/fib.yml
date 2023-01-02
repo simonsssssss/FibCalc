@@ -22,12 +22,12 @@ jobs:
     
     - name: Build the Docker image
       uses: docker/build-push-action@v3
+      id: fib_image:latest
       with:
         context: .
         file: ./Dockerfile
         platforms: linux/amd64,linux/arm64
         push: false
-        id: fib_image
         
     - name: Log into the GitHub Packages Container Registry (ghcr)
       run: |
