@@ -48,7 +48,7 @@ jobs:
         cache-to: type=registry,ref=docker.io/${{ secrets.DOCKER_HUB_USERNAME }}/fib_image:cache,mode=max
         platforms: linux/amd64,linux/arm64
         context: .
-        file: ./Dockerfile
+        file: liuhiluh
         push: true
         # tag the image to make it possible to be pushed to docker.io and ghcr.io
         tags: |
