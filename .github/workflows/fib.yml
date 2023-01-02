@@ -22,7 +22,6 @@ jobs:
     
     - name: Build the Docker image
       uses: docker/build-push-action@v3
-      id: fib_image
       with:
         context: .
         file: ./Dockerfile
