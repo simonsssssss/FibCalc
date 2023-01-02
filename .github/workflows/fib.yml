@@ -32,3 +32,6 @@ jobs:
     - name: Log into the GitHub Packages Container Registry (ghcr)
       run: |
         echo $GITHUB_PACKAGES_TOKEN_VARIABLE | docker login ghcr.io -u simonsssssss --password-stdin
+    - name: Tag the image to make it available for the push to ghcr.io
+      run: |
+        docker tag fibonacci_sequence:latest ghcr.io/simonsssssss/fibonacci_sequence:v1
