@@ -32,12 +32,10 @@ jobs:
     - name: Log into the GitHub Packages Container Registry (ghcr)
       run: |
         echo $GITHUB_PACKAGES_TOKEN_VARIABLE | docker login ghcr.io -u simonsssssss --password-stdin
-      
-    - name: Build the Docker image
+        
+    - name: Build the Docker image and push it to Docker Hub
       uses: docker/build-push-action@v3
       with:
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         platforms: linux/amd64,linux/arm64
         context: .
         file: ./Dockerfile
