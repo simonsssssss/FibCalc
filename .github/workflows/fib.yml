@@ -19,16 +19,15 @@ jobs:
     
     - name: Buildit setup
       uses: docker/setup-buildx-action@v2
-    
-    - name: Log into the GitHub Packages Container Registry (ghcr)
-      run: |
-        echo $GITHUB_PACKAGES_TOKEN_VARIABLE | docker login ghcr.io -u simonsssssss --password-stdin
-    
+      
     - name: Build the Docker image
       uses: docker/build-push-action@v3
       with:
         context: .
         file: ./Dockerfile
         platforms: linux/amd64,linux/arm64
-        push: true
-        registry: ghcr.io
+        push: false
+        
+    - name: Log into the GitHub Packages Container Registry (ghcr)
+      run: |
+        echo $GITHUB_PACKAGES_TOKEN_VARIABLE | docker login ghcr.io -u simonsssssss --password-stdin
