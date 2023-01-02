@@ -43,7 +43,7 @@ jobs:
         file: ./Dockerfile
         push: true
         tags: |
-          fib_image:latest
+          simonsssss/fib_image:latest
         
     - name: sdfsrdtrdytf
       run: |
