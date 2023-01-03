@@ -1,5 +1,5 @@
 # Pierwszy etap budowy obrazu
-# Wybranie obrazu bazowego dla danej architektury
+# Wybranie obrazu bazowego dla architektury wykonujacej budowe
 
 FROM --platform=$BUILDPLATFORM eclipse-temurin:17-jdk-jammy AS build
 
