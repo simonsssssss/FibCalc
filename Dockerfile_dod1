@@ -1,0 +1,36 @@
+# Pierwszy etap budowy obrazu
+# Wybranie obrazu bazowego dla danej architektury
+
+FROM --platform=$BUILDPLATFORM eclipse-temurin:17-jdk-jammy AS build
+
+# Okreslenie katalogu roboczego
+
+WORKDIR /app
+
+# Skopiowanie kodu zrodlowego aplikacji do katalogu /app kontenera
+
+COPY ./src/main/java/com/mycompany/fibcalc/ ./
+
+# Kompilacja programu FibCalc i wygenerowanie pliku FibCalc.java wewnatrz
+# struktury folderów zaczynajacej sie od katalogu "compiled"
+
+RUN javac FibCalc.java -d compiled
+
+
+
+#  Drugi etap budowy obrazu
+#  Wybranie obrazu bazowego
+
+FROM eclipse-temurin:17-jdk-jammy
+
+# Okreslenie katalogu roboczego
+
+WORKDIR /application
+
+# Skopiowanie z pierwszego etapu zawartosci folderu "compiled"
+
+COPY --from=build /app/compiled/ ./
+
+# Uruchomienie programu FibCalc z uzyciem skopiowanego pliku klasy
+
+CMD ["java","com.mycompany.fibcalc.FibCalc"]
